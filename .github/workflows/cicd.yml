@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  webapp:
+    image: node:14-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "8080:8080"
+    command: npm start
+
+  database:
+    image: mongo:latest
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongo-data:
